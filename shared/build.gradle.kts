@@ -18,27 +18,30 @@ kotlin {
     }
 
     sourceSets {
+        val ktorVersion = "2.2.1"
         val commonMain by getting
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
 // Ktor
 
-                implementation("io.ktor:ktor-client-core:1.6.3")
-                implementation("io.ktor:ktor-client-cio:1.6.3")
-                implementation("io.ktor:ktor-client-serialization:1.6.3")
-                implementation("io.ktor:ktor-client-websockets:1.6.3")
-                implementation("io.ktor:ktor-client-logging:1.6.3")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.4.1")
-                implementation("ch.qos.logback:logback-classic:1.2.6")
+//                implementation("io.ktor:ktor-client-core:1.6.3")
+//                implementation("io.ktor:ktor-client-cio:1.6.3")
+//                implementation("io.ktor:ktor-client-serialization:1.6.3")
+//                implementation("io.ktor:ktor-client-websockets:1.6.3")
+//                implementation("io.ktor:ktor-client-logging:1.6.3")
+//                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.4.1")
+//                implementation("ch.qos.logback:logback-classic:1.2.6")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
             }
         }
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-android:1.6.3")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+                implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
             }
         }
         val androidTest by getting
@@ -47,7 +50,7 @@ kotlin {
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
             dependencies {
-                implementation("io.ktor:ktor-client-ios:1.6.3")
+                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
             }
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)

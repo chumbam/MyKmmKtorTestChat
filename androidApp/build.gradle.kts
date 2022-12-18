@@ -23,6 +23,9 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.3.0"
     }
+    compileOptions {
+        isCoreLibraryDesugaringEnabled = true
+    }
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
